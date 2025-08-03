@@ -29,7 +29,7 @@ const InitialCharacters = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className=" bg-lime-300 p-4">
       <h1 className="text-xl font-bold mb-4">Personajes Iniciales</h1>
 
       {loading && <Loader />}

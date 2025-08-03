@@ -36,7 +36,7 @@ const SearchForm = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-green-500 rounded-lg shadow-md w-lg">
       <form onSubmit={buscarPersonaje} className="mb-6 flex flex-col md:flex-row gap-4 items-center">
         <input
           type="text"

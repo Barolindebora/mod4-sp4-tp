@@ -9,9 +9,9 @@ function App() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className={showModal ? "overflow-hidden h-screen" : ""}>
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        <h1 className="text-3xl font-bold text-center mb-8">Buscador de Personajes</h1>
+    <div className=  {showModal ? "overflow-hidden h-screen" : ""}>
+      <div className="max-w-7xl mx-auto px-4 py-6 bg-lime-300 min-h-screen">
+        <h1 className="text-3xl font-bold text-center mb-8">Personajes</h1>
 
         <div className="flex justify-center mb-6">
           <button

@@ -4,7 +4,7 @@ const FavoritesModal = ({ onClose }) => {
   const { favorites, removeFromFavorites } = useFavorites();
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-orange-600 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-2xl shadow-lg w-11/12 max-w-lg relative">
         <button
           onClick={onClose}
@@ -30,7 +30,7 @@ const FavoritesModal = ({ onClose }) => {
                 <span className="flex-1 font-medium">{fav.name}</span>
                 <button
                   onClick={() => removeFromFavorites(fav.id)}
-                  className="text-red-600 hover:underline text-sm"
+                  className="text-purple-600 text-2xl hover:underline"
                 >
                   Eliminar
                 </button>
