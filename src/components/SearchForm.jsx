@@ -3,7 +3,7 @@ import CharacterCard from "./CharacterCard";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
 
-const SearchForm = ({ favoritos, onToggleFavorito }) => {
+const SearchForm = () => {
   const [nombre, setNombre] = useState("");
   const [resultados, setResultados] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,16 +20,13 @@ const SearchForm = ({ favoritos, onToggleFavorito }) => {
     setError(null);
 
     try {
-      const response = await fetch(
-        `https://rickandmortyapi.com/api/character/?name=${nombre}`
-      );
+      const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${nombre}`);
       if (!response.ok) throw new Error("Personaje no encontrado.");
 
       const data = await response.json();
       setResultados(data.results);
       toast.success("Personajes encontrados correctamente.");
     } catch (err) {
-      console.error(err);
       setError(err.message);
       setResultados([]);
       toast.error("No se encontró ningún personaje con ese nombre.");
@@ -60,15 +57,7 @@ const SearchForm = ({ favoritos, onToggleFavorito }) => {
       {error && <p className="text-red-500 text-center">{error}</p>}
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {!loading &&
-          resultados.map((p) => (
-            <CharacterCard
-              key={p.id}
-              personaje={p}
-              onToggleFavorito={onToggleFavorito}
-              esFavorito={favoritos.some((f) => f.id === p.id)}
-            />
-          ))}
+        {!loading && resultados.map((p) => <CharacterCard key={p.id} personaje={p} />)}
       </div>
     </div>
   );

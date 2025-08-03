@@ -1,7 +1,14 @@
-import { useEffect, useState } from "react";
+import { useFavorites } from "../context/FavoritesContext";
 
-const CharacterCard = ({ personaje, onToggleFavorito, esFavorito }) => {
+const CharacterCard = ({ personaje }) => {
   const { id, name, species, location, image, status } = personaje;
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+
+  const esFavorito = favorites.some((fav) => fav.id === id);
+
+  const toggleFavorito = () => {
+    esFavorito ? removeFromFavorites(id) : addToFavorites(personaje);
+  };
 
   return (
     <div className="bg-white shadow-md rounded-2xl overflow-hidden p-4 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300">
@@ -13,12 +20,10 @@ const CharacterCard = ({ personaje, onToggleFavorito, esFavorito }) => {
       <p className={`text-sm ${status === "Alive" ? "text-green-600" : "text-red-500"}`}>
         ☠️ {status}
       </p>
-
-      {/* Edad ficticia, porque la API no tiene edad */}
       <p className="text-sm text-gray-500 italic mt-1">Edad estimada: Desconocida</p>
 
       <button
-        onClick={() => onToggleFavorito(personaje)}
+        onClick={toggleFavorito}
         className={`mt-4 px-4 py-1 rounded-full text-sm font-medium transition-colors ${
           esFavorito ? "bg-red-500 text-white" : "bg-yellow-400 text-gray-800 hover:bg-yellow-500"
         }`}
