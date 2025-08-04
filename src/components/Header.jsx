@@ -1,6 +1,9 @@
 const Header = ({ onOpenFavorites, onOpenSearch }) => {
   return (
-    <header className="flex justify-end items-center gap-4 mb-6 bg-cyan-300 p-4 rounded-lg shadow-md">
+    <header className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 bg-cyan-300 p-4 rounded-lg shadow-md">
+      <h1 className="text-4xl font-bold text-center mb-6 font-orbitron text-lime-500 flex-grow">
+        Personajes - API de Rick and Morty
+      </h1>
       {/* Botón lupa */}
       <button
         onClick={onOpenSearch}

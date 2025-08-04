@@ -15,9 +15,7 @@ function App() {
   return (
     <div className={pageIsBlocked ? "overflow-hidden h-screen" : ""}>
       <div className="max-w-7xl mx-auto px-4 py-6 bg-darkBg min-h-screen text-lightText">
-        <h1 className="text-4xl font-bold text-center mb-6 font-orbitron text-neonGreen">
-          Personajes
-        </h1>
+        
 
         {/* 🔍 Lupa + botón favoritos */}
         <Header
