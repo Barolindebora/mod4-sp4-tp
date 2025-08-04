@@ -37,17 +37,17 @@ const SearchForm = () => {
 
   return (
     <div className="w-full">
-      <form onSubmit={buscarPersonaje} className="flex flex-col md:flex-row gap-4 items-center mb-4">
+      <form onSubmit={buscarPersonaje} className="flex flex-col md:flex-row gap-6 items-center mb-4">
         <input
           type="text"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
           placeholder="Buscar personaje"
-          className="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/2"
+          className="border-2 border-fuchsia-700 rounded-lg px-4 py-2 w-full md:w-1/2"
         />
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full md:w-auto"
+          className="bg-fuchsia-600 text-white px-4 py-2 rounded-lg hover:bg-fuchsia-700 transition w-full md:w-auto"
         >
           Buscar
         </button>
