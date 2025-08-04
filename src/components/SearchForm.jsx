@@ -36,27 +36,27 @@ const SearchForm = () => {
   };
 
   return (
-    <div className="p-4 bg-green-500 rounded-lg shadow-md w-lg">
-      <form onSubmit={buscarPersonaje} className="mb-6 flex flex-col md:flex-row gap-4 items-center">
+    <div className="w-full">
+      <form onSubmit={buscarPersonaje} className="flex flex-col md:flex-row gap-4 items-center mb-4">
         <input
           type="text"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
-          placeholder="Buscar personaje por nombre..."
+          placeholder="Buscar personaje"
           className="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-1/2"
         />
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-full md:w-auto"
         >
           Buscar
         </button>
       </form>
 
       {loading && <Loader />}
-      {error && <p className="text-red-500 text-center">{error}</p>}
+      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-h-80 overflow-y-auto">
         {!loading && resultados.map((p) => <CharacterCard key={p.id} personaje={p} />)}
       </div>
     </div>

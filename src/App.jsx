@@ -1,32 +1,44 @@
 import { useState } from "react";
 import InitialCharacters from "./components/InitialCharacters";
-import SearchForm from "./components/SearchForm";
 import FavoritesModal from "./components/FavoritesModal";
+import SearchModal from "./components/SearchModal";
+import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
+  const [showFavoritesModal, setShowFavoritesModal] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
+
+  const pageIsBlocked = showFavoritesModal || showSearchModal;
 
   return (
-    <div className=  {showModal ? "overflow-hidden h-screen" : ""}>
-      <div className="max-w-7xl mx-auto px-4 py-6 bg-lime-300 min-h-screen">
-        <h1 className="text-3xl font-bold text-center mb-8">Personajes</h1>
+    <div className={pageIsBlocked ? "overflow-hidden h-screen" : ""}>
+      <div className="max-w-7xl mx-auto px-4 py-6 bg-darkBg min-h-screen text-lightText">
+        <h1 className="text-4xl font-bold text-center mb-6 font-orbitron text-neonGreen">
+          Personajes
+        </h1>
 
-        <div className="flex justify-center mb-6">
-          <button
-            onClick={() => setShowModal(true)}
-            className="bg-yellow-400 text-gray-800 px-6 py-2 rounded-lg shadow hover:bg-yellow-500 transition"
-          >
-            Ver Favoritos ⭐
-          </button>
-        </div>
+        {/* 🔍 Lupa + botón favoritos */}
+        <Header
+          onOpenFavorites={() => setShowFavoritesModal(true)}
+          onOpenSearch={() => setShowSearchModal(true)}
+        />
 
-        <SearchForm />
+        {/* 👥 Personajes iniciales */}
         <InitialCharacters />
 
-        {showModal && <FavoritesModal onClose={() => setShowModal(false)} />}
+        {/* ⭐ Modal de favoritos */}
+        {showFavoritesModal && (
+          <FavoritesModal onClose={() => setShowFavoritesModal(false)} />
+        )}
 
+        {/* 🔍 Modal de búsqueda */}
+        {showSearchModal && (
+          <SearchModal onClose={() => setShowSearchModal(false)} />
+        )}
+
+        {/* 🔔 Toasts */}
         <ToastContainer />
       </div>
     </div>
